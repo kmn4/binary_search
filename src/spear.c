@@ -4,6 +4,16 @@ int n;
 int k;
 int A[100000];
 
+int ok(int x) {
+    int spears = 0;
+    int i;
+    for (i = 0; i < n; i++) {
+        spears += A[i] / x;
+        if (spears >= k) return 1;
+    }
+
+    return 0;
+}
 
 int main(){
   int i, lb, ub;
@@ -12,6 +22,15 @@ int main(){
     scanf("%d", &A[i]);
   }
 
+  ub = 1000000001;
+  lb = 0;
+  while (ub - lb > 1) {
+      int m = (ub + lb) / 2;
+      if (!ok(m)) ub = m;
+      else lb = m;
+  }
+
+  printf("%d\n", ub-1);
 
   return 0;
 }
