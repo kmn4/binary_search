@@ -26,11 +26,11 @@ int main(){
   lb = 0;
   while (ub - lb > 1) {
       int m = (ub + lb) / 2;
-      if (!ok(m)) ub = m;
-      else lb = m;
+      if (ok(m)) lb = m;
+      else ub = m;
   }
 
-  printf("%d\n", ub-1);
+  printf("%d\n", lb);
 
   return 0;
 }
